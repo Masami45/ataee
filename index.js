@@ -3,8 +3,8 @@ const bot = new Discord.Client({disableEveryone: true}); // botnya tidak akan bi
 const config = require("./config.json"); // kita akan menaruh prefix dan token disini
 
 bot.on("ready", async () => {
-    console.log(`${bot.user.username} Sudah online!`);
-    bot.user.setActivity("Peler Yang panjang", {type: "PLAYING"});
+    console.log(`${bot.user.username} Sudah Coli!!`);
+    bot.user.setActivity("Say | %help", {type: "PLAYING"});
 });
 
 bot.on("message", async message => {
@@ -20,12 +20,18 @@ bot.on("message", async message => {
         message.reply("Halo juga!! :kissing:");
     }
 
-    if (cmd === `${prefix}bye`) {
-        message.channel.send("BYE BYE!! :wave:");
+    if (cmd === `${prefix}ping`) {
+       let ping = Date.now() - message.createdTimestamp
+       let embed = new Discord.RichEmbed()
+       .setTitle('PING! PONG! :ping_pong:')
+       .addField('Latency',`${ping}ms`, true)
+       .setColor('#33C1FF')
+      message.channel.send({embed})
+       
     }
 
-    if (cmd === `${prefix}test`) {
-        message.channel.send("ON!");
+    if (cmd === `${prefix}atfroost`) {
+        message.channel.send("Apaan WOI! :kissing_heart: :kissing_heart: :kissing_heart: :kissing_heart: :kissing_heart: :kissing_heart: :kissing_heart:");
     }
 
     if (cmd === `${prefix}avatar`) {
@@ -37,16 +43,30 @@ bot.on("message", async message => {
         message.channel.send(embed)
         
     }
-    
+  
+ if (cmd === `${prefix}help`) {
+        let bicon = bot.user.displayAvatarURL;
+        let embed = new Discord.RichEmbed()
+        .setAuthor("Command Help!")
+        .setDescription("Hello Everyone i am **Atfroost**")
+        .setColor("RANDOM")
+        .setThumbnail(bicon)
+        .addField("My feature:"," `halo` `ping` `avatar` `botinfo` `serverinfo`", true)
+        .setFooter("NOOB BOT");
+
+        message.channel.send(embed);
+    }
+  
+
     if (cmd === `${prefix}botinfo`) {
         let bicon = bot.user.displayAvatarURL; // untuk menampilkan avatar dari bot kalian
         let botembed = new Discord.RichEmbed()
-        .setAuthor("Informasi Bot")
+        .setAuthor("Informasi Bot:")
         .setColor("RANDOM") // kalian juga bisa menggunakan kode HEX, cari di google
         .setThumbnail(bicon) // thumbnail dari avatar bot kalian tadi
-        .addField("Nama Bot", bot.user.username)
-        .addField("Dibuat", bot.user.createdAt)
-        .addField("Owner", message.guild.owner); // owner dari guild
+        .addField("Nama Bot:", bot.user.username)
+        .addField("Dibuat:", bot.user.createdAt)
+        .addField(":crown: Owner:", message.guild.owner); // owner dari guild
 
         message.channel.send(botembed); // untuk mengirim embed yang sudah dibuat diatas..
     }
