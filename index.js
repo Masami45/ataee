@@ -66,7 +66,7 @@ bot.on("message", async message => {
         .setThumbnail(bicon) // thumbnail dari avatar bot kalian tadi
         .addField("Nama Bot:", bot.user.username)
         .addField("Dibuat:", bot.user.createdAt)
-        .addField(":crown: Owner:", message.guild.owner); // owner dari guild
+        .addField(":crown: Owner:", message.bot.owner); // owner dari guild
 
         message.channel.send(botembed); // untuk mengirim embed yang sudah dibuat diatas..
     }
