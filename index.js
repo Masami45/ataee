@@ -58,7 +58,7 @@ bot.on("message", async message => {
     }
   
 
-    if (cmd === `${prefix}botinfo`) {
+    if (cmd === `${prefix}aboutbot`) {
         let bicon = bot.user.displayAvatarURL; // untuk menampilkan avatar dari bot kalian
         let botembed = new Discord.RichEmbed()
         .setAuthor("Informasi Bot:")
